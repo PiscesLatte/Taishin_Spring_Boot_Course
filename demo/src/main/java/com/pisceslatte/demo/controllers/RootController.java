@@ -1,6 +1,6 @@
-package com.pisceslatte.demo;
+package com.pisceslatte.demo.controllers;
 
-import com.pisceslatte.demo.servise.GreetingService;
+import com.pisceslatte.demo.services.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
