@@ -14,24 +14,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class Test2 {
-
     @Autowired
     private MockMvc mockMvc;
-
     @Test
-    public void testNotNull(){
+    public void testNotNull() {
         assertThat(mockMvc).isNotNull();
     }
-
     @Test
     public void testHomePage() throws Exception {
         mockMvc.perform(get("/")).andExpect(status().isOk())
                 .andExpect(view().name("home"))
-                .andExpect(content().string(containsString("Work for")));
+                .andExpect(content().string(containsString("my first")));
     }
-
     @Test
     public void test404() throws Exception {
-        mockMvc.perform(get("/pisceslatte")).andExpect(status().isNotFound());
+        mockMvc.perform(get("/hello")).andExpect(status().isNotFound());
     }
 }
