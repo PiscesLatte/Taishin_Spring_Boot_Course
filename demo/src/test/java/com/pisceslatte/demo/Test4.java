@@ -10,20 +10,23 @@ import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest
-public class Test3 {
+@WebMvcTest(controllers = RootController.class)
+public class Test4 {
     @Autowired
     private MockMvc mockMvc;
+
     @Test
     public void testNotNull() {
         assertThat(mockMvc).isNotNull();
     }
+
     @Test
     public void testHomePage() throws Exception {
         mockMvc.perform(get("/")).andExpect(status().isOk())
                 .andExpect(view().name("home"))
                 .andExpect(content().string(containsString("my first")));
     }
+
     @Test
     public void test404() throws Exception {
         mockMvc.perform(get("/hello")).andExpect(status().isNotFound());
